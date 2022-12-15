@@ -2,6 +2,10 @@
 FROM centos:7.3.1611
 MAINTAINER Hal Rosenberg <hrosenbe@vmware.com>
 
+RUN echo "http_proxy=http://proxy.cse.cuhk.edu.hk:8000" >> /etc/environment
+RUN echo "https_proxy=http://proxy.cse.cuhk.edu.hk:8000" >> /etc/environment
+RUN echo "proxy=http://proxy.cse.cuhk.edu.hk:8000" >> /etc/yum.conf
+
 COPY sysctl.conf /etc/sysctl.conf
 COPY updateResolveConf.pl /updateResolveConf.pl
 

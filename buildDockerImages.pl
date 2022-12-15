@@ -101,7 +101,7 @@ sub buildImage {
 		rewriteDockerfile("./dockerImages/$imageName", $namespace, $version);
 	}
 
-	my $buildArgs = "";
+	my $buildArgs = "--build-arg http_proxy=http://proxy.cse.cuhk.edu.hk:8000 --build-arg https_proxy=http://proxy.cse.cuhk.edu.hk";
 	foreach my $buildArg (@$buildArgsListRef) {
 		$buildArgs .= " --build-arg $buildArg";
 	}

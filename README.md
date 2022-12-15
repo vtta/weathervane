@@ -1,5 +1,15 @@
 ![Weathervane](doc/images/VMW-Weathervane-Logo-SML.png)
 
+## Building
+
+```bash
+aria2c -c -x 16 -k 1M -j 1 https://cfdownload.adobe.com/pub/adobe/coldfusion/java/java8/java8u351/jdk/jdk-8u351-linux-x64.tar.gz
+tar axvf jdk-8u351-linux-x64.tar.gz
+JAVA_HOME=$(pwd)/ TERM=xterm-color ./gradlew --parallel=true clean release
+./buildDockerImages.pl
+# currently failing: postgresql9.3 does not exist anymore
+```
+
 ## Overview
 
 Weathervane is an application-level performance benchmark designed to allow the investigation of performance tradeoffs in modern virtualized and cloud infrastructures. It consists of an application, a workload driver that can drive a realistic and repeatable load against the application, and a run-harness that automates the process of executing runs and collecting results and relevant performance data. It can be used to investigate the performance characteristics of cloud and virtual infrastructures by deploying the application on the environment of interest, driving a load against the application, and examining the resulting performance metrics. A common use-case would involve varying some component or characteristic of the infrastructure in order to compare the effect of the alternatives on application-level performance.
